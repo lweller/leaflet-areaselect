@@ -1,6 +1,6 @@
 {
   "name": "@lweller/leaflet-areaselect",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A fixed positioned, resizable rectangle for selecting an area on the map.",
   "main": "./src/leaflet-areaselect.js",
   "directories": {
