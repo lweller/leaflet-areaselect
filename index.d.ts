@@ -20,7 +20,7 @@ declare module 'leaflet' {
     height: number;
   }
 
-  interface AreaSelect {
+  interface AreaSelect extends Evented {
     addTo(map: Map): Map;
     getBounds(): LatLngBounds;
     remove(): void;
