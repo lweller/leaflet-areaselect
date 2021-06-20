@@ -51,6 +51,20 @@ or this [JSFiddle](http://jsfiddle.net/heyman/3N2DN/) where I've set *keepAspect
 
 AreaSelect is developed by [Jonatan Heyman](http://heyman.info).
 
+Further improvements made by Lucien Weller. 
+
+## Change Log
+
+### 1.2.1
+* Initial Version published to npmjs under spoce _lweller_
+
+### 1.3.0
+* Feature: added events to cover the complete resizing cycle (resizsestart, resize, resizeend)
+* Feature: exposed in type definition current dimension of area with getDimensions
+* Fix: extending AreaSelect form Evented in type definition
+* Fix: rendering when area select dimension are bigger than map
+* Fix: position of handles when a scrollbar is display on page
+
 ## License
 
 MIT License
