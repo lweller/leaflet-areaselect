@@ -190,9 +190,9 @@ L.AreaSelect = L.Class.extend({
         var handleOffset = Math.round(this._nwHandle.offsetWidth/2);
 
         var topBottomWidth = size.x
-        var topBottomHeight = Math.max(Math.round((size.y - this._height) / 2), 0);
-        var leftRightWidth = Math.max(Math.round((size.x - this._width) / 2), 0);
-        var leftRightHeight = Math.max(size.y - (topBottomHeight * 2), 0);
+        var topBottomHeight = Math.round((size.y - this._height) / 2);
+        var leftRightWidth = Math.round((size.x - this._width) / 2);
+        var leftRightHeight = size.y - (topBottomHeight * 2);
         
         function setDimensions(element, dimension) {
             element.style.width = dimension.width + "px";
@@ -204,34 +204,34 @@ L.AreaSelect = L.Class.extend({
         }
 
         setDimensions(this._topShade, {
-            width: topBottomWidth,
-            height: topBottomHeight,
+            width: Math.max(topBottomWidth, 0),
+            height: Math.max(topBottomHeight, 0),
             top: 0,
             left: 0
         });
         setDimensions(this._bottomShade, {
-            width: topBottomWidth,
-            height: topBottomHeight,
+            width:  Math.max(topBottomWidth, 0),
+            height:  Math.max(topBottomHeight, 0),
             top: Math.max(size.y - topBottomHeight, 0),
             left: 0
         });
         setDimensions(this._leftShade, {
-            width: leftRightWidth,
-            height: leftRightHeight,
-            top: topBottomHeight,
+            width:  Math.max(leftRightWidth, 0),
+            height:  Math.max(leftRightHeight, 0),
+            top: Math.max(topBottomHeight, 0),
             left: 0
         });
         setDimensions(this._rightShade, {
-            width: leftRightWidth,
-            height: leftRightHeight,
-            top: topBottomHeight,
+            width:  Math.max(leftRightWidth, 0),
+            height:  Math.max(leftRightHeight, 0),
+            top:  Math.max(topBottomHeight, 0),
             left: Math.max(size.x - leftRightWidth, 0)
         });
         
-        setDimensions(this._nwHandle, {left:leftRightWidth-handleOffset, top:topBottomHeight-7});
-        setDimensions(this._neHandle, {right:leftRightWidth-handleOffset, top:topBottomHeight-7});
-        setDimensions(this._swHandle, {left:leftRightWidth-handleOffset, bottom:topBottomHeight-7});
-        setDimensions(this._seHandle, {right:leftRightWidth-handleOffset, bottom:topBottomHeight-7});
+        setDimensions(this._nwHandle, {left:leftRightWidth-handleOffset, top:topBottomHeight-handleOffset});
+        setDimensions(this._neHandle, {left:size.x - leftRightWidth-handleOffset, top:topBottomHeight-handleOffset});
+        setDimensions(this._swHandle, {left:leftRightWidth-handleOffset, top:size.y-topBottomHeight-handleOffset});
+        setDimensions(this._seHandle, {left:size.x - leftRightWidth-handleOffset, top:size.y-topBottomHeight-handleOffset});
     }
 });
 
