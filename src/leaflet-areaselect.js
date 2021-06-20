@@ -78,7 +78,13 @@ L.AreaSelect = L.Class.extend({
         this._container.parentNode.removeChild(this._container);
     },
 
-    
+    getDimensions: function() {
+        return {
+            width: this._width,
+            height: this._height
+        }
+    },
+
     setDimensions: function(dimensions) {
         if (!dimensions)
             return;

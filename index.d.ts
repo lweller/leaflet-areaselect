@@ -24,6 +24,7 @@ declare module 'leaflet' {
     addTo(map: Map): Map;
     getBounds(): LatLngBounds;
     remove(): void;
+    getDimensions(): Dimension;
     setDimensions(dim: Dimension): void;
   }
 }
