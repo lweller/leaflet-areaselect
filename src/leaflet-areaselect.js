@@ -190,9 +190,9 @@ L.AreaSelect = L.Class.extend({
         var handleOffset = Math.round(this._nwHandle.offsetWidth/2);
 
         var topBottomWidth = size.x
-        var topBottomHeight = Math.round((size.y - this._height) / 2);
-        var leftRightWidth = Math.round((size.x - this._width) / 2);
-        var leftRightHeight = size.y - (topBottomHeight * 2);
+        var topBottomHeight = Math.max(Math.round((size.y - this._height) / 2), 0);
+        var leftRightWidth = Math.max(Math.round((size.x - this._width) / 2), 0);
+        var leftRightHeight = Math.max(size.y - (topBottomHeight * 2), 0);
         
         function setDimensions(element, dimension) {
             element.style.width = dimension.width + "px";
@@ -212,7 +212,7 @@ L.AreaSelect = L.Class.extend({
         setDimensions(this._bottomShade, {
             width: topBottomWidth,
             height: topBottomHeight,
-            top: size.y - topBottomHeight,
+            top: Math.max(size.y - topBottomHeight, 0),
             left: 0
         });
         setDimensions(this._leftShade, {
@@ -225,7 +225,7 @@ L.AreaSelect = L.Class.extend({
             width: leftRightWidth,
             height: leftRightHeight,
             top: topBottomHeight,
-            left: size.x - leftRightWidth
+            left: Math.max(size.x - leftRightWidth, 0)
         });
         
         setDimensions(this._nwHandle, {left:leftRightWidth-handleOffset, top:topBottomHeight-7});
