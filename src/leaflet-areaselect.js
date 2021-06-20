@@ -138,6 +138,8 @@ L.AreaSelect = L.Class.extend({
             var ratio = self._width / self._height;
             var size = self.map.getSize();
             var mapContainer = self.map.getContainer();
+
+            self.fire("resizestart")
             
             function onMouseMove(event) {
                 if (self.options.keepAspectRatio) {
@@ -158,6 +160,8 @@ L.AreaSelect = L.Class.extend({
                 curX = event.pageX;
                 curY = event.pageY;
                 self._render();
+
+                self.fire("resize")
             }
             function onMouseUp(event) {
                 self.map.dragging.enable();
@@ -165,6 +169,7 @@ L.AreaSelect = L.Class.extend({
                 L.DomEvent.removeListener(mapContainer, "touchmove", onMouseMove);
                 L.DomEvent.addListener(handle, "touchstart", onMouseDown);
                 self.fire("change");
+                self.fire("resizeend")
             }
             L.DomEvent.addListener(mapContainer, "touchmove", onMouseMove);
             L.DomEvent.addListener(mapContainer, "touchend", onMouseUp);
